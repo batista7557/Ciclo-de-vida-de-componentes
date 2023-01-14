@@ -1,1 +1,1 @@
-## Ciclo de vida de componentes em ReactJS
+# Ciclo de vida de componentes em ReactJS
