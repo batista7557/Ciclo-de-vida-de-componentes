@@ -6,8 +6,36 @@ class MeuComponente extends Component {
         super(props)
 
         this.state = { numero: 5 }
+        this.adicionarNumero = this.adicionarNumero.bind(this)
 
         console.log('Constutor...')
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log('getDerived...')
+        return null
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount...')
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate...')
+        console.log('estado atual', this.setState)
+        console.log('próximo estado', nextState)
+        return true
+    }
+
+    componentDidUpdate() {
+        console.log('componentDidUpdate...')
+    }
+
+    adicionarNumero(){
+        console.log('setState...')
+        let numeroAtual = this.state.numero
+        numeroAtual+=1
+        this.setState({ numero: numeroAtual })
     }
 
     render() {
@@ -15,6 +43,10 @@ class MeuComponente extends Component {
         return <div>
             <p>{this.props.titulo}</p>
             <p>{this.state.numero}</p>
+
+            <button onClick={this.adicionarNumero}>
+                Adicionar número
+            </button>
         </div>
     }
 }
